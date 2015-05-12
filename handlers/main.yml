@@ -3,5 +3,10 @@
 
 - name: restart collectd
   service:
-    name: collectdd
+    name: collectd
+    state: restarted
+
+- name: restart httpd
+  service:
+    name: httpd
     state: restarted

@@ -1,0 +1,64 @@
+# Config file for collectd(1).
+# Please read collectd.conf(5) for a list of options.
+# http://collectd.org/
+#
+# {{ ansible_managed }}
+
+##############################################################################
+# Global settings for the daemon.                                            #
+##############################################################################
+
+Hostname    "{{ collectd_hostname }}"
+FQDNLookup   {{ collectd_fqdn_lookup }}
+BaseDir     "{{ collectd_base_dir }}"
+PIDFile     "{{ collectd_pid_file }}"
+PluginDir   "{{ collectd_plugin_dir }}"
+TypesDB     "{{ collectd_types_db }}"
+
+Interval     {{ collectd_interval }}
+
+Timeout      {{ collectd_timeout }}
+ReadThreads  {{ collectd_read_threads }}
+WriteThreads  {{ collectd_write_threads }}
+
+{% if collectd_write_queue_limit_high is defined %}
+WriteQueueLimitHigh  {{ collectd_write_queue_limit_high }}
+{% endif %}
+{% if collectd_write_queue_limit_low is defined %}
+WriteQueueLimitLow {{ collectd_write_queue_limit_low }}
+{% endif %}
+
+##############################################################################
+# Logging                                                                    #
+##############################################################################
+
+{% if collectd_logfile is defined %}
+LoadPlugin logfile
+
+<Plugin logfile>
+  LogLevel      {{ collectd_log_level }}
+  File          {{ collectd_logfile }}
+  Timestamp     true
+  PrintSeverity true
+</Plugin>
+
+{% else %}
+LoadPlugin syslog
+<Plugin syslog>
+  LogLevel {{ collectd_log_level }}
+</Plugin>
+{% endif %}
+
+##############################################################################
+# LoadPlugin section                                                         #
+##############################################################################
+
+LoadPlugin cpu
+LoadPlugin interface
+LoadPlugin load
+LoadPlugin memory
+
+<Include "{{ collectd_include_dir }}">
+  Filter "*.conf"
+</Include>
+

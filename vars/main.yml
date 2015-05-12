@@ -1,7 +1,25 @@
 # roles/collectd/vars/main.yml
+# Role variables that normally should not be changed
 ---
 
 collectd_packages:
   - collectd
+  - collectd-web
 
-collectd_service: collectdd
+collectd_service: collectd
+collectd_web_service: httpd
+
+collectd_config_file: /etc/collectd.conf
+collectd_include_dir: /etc/collectd.d/
+
+collectd_base_dir: /var/lib/collectd
+collectd_pid_file: /var/run/collectd.pid
+collectd_plugin_dir: /var/lib64/collectd
+collectd_types_db: /usr/share/collectd/types.db
+
+
+collectd_rrdtool_data_dir: /var/lib/collectd/rrd
+collectd_rrdtool_cache_timeout : 120
+collectd_rrdtool_cache_flush : 900
+
+

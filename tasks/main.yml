@@ -1,6 +1,12 @@
 # roles/collectd/tasks/main.yml
 ---
 
+- name: Ensure the EPEL repository is available
+  yum:
+    pkg: epel-release
+    state: installed
+  tags: collectd
+
 - name: Install packages
   yum:
     pkg: "{{ item }}"
@@ -13,4 +19,25 @@
     name: "{{ collectd_service }}"
     state: started
     enabled: true
+  tags: collectd
+
+- name: Ensure web server is started
+  service:
+    name: "{{ collectd_web_service }}"
+    state: started
+    enabled: true
+  tags: collectd
+
+- name: Install main configuration file
+  template:
+    src: etc_collectd.conf.j2
+    dest: "{{ collectd_config_file }}"
+  notify: restart collectd
+  tags: collectd
+
+- name: Install rrdtool configuration file
+  template:
+    src: etc_collectd_d_rrdtool.conf.j2
+    dest: "{{ collectd_include_dir }}/rrdtool.conf"
+  notify: restart collectd
   tags: collectd

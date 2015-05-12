@@ -1,0 +1,11 @@
+# Config file for Collectd plugin rrdtool
+#
+# {{ ansible_managed }}
+
+LoadPlugin rrdtool
+
+<Plugin rrdtool>
+  DataDir      "{{ collectd_rrdtool_data_dir }}"
+  CacheTimeout {{ collectd_rrdtool_cache_timeout }}
+  CacheFlush   {{ collectd_rrdtool_cache_flush }}
+</Plugin>
