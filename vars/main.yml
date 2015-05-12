@@ -1,0 +1,7 @@
+# roles/collectd/vars/main.yml
+---
+
+collectd_packages:
+  - collectd
+
+collectd_service: collectdd
