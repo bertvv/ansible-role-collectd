@@ -1,5 +1,17 @@
 ---
-- hosts: all
+
+- hosts: server
+  sudo: true
+  tasks:
+    - name: Ensure firewall is not running
+      service:
+        name: firewalld
+        state: stopped
+  roles:
+    - collectd
+
+
+- hosts: clients
   sudo: true
   tasks:
     - name: Ensure firewall is not running
