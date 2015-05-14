@@ -11,3 +11,5 @@ collectd_read_threads: 5
 collectd_write_threads: 5
 
 collectd_log_level: info
+
+collectd_web_enabled: true
