@@ -4,7 +4,6 @@
 
 collectd_packages:
   - collectd
-  - collectd-web
 
 collectd_service: collectd
 collectd_web_service: httpd
@@ -17,6 +16,8 @@ collectd_pid_file: /var/run/collectd.pid
 collectd_plugin_dir: /lib64/collectd
 collectd_types_db: /usr/share/collectd/types.db
 
+collectd_web_packages:
+  - collectd-web
 collectd_web_base_dir: /usr/share/collectd
 collectd_web_conf_dir: /etc/httpd/conf.d/
 
