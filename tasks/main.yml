@@ -7,11 +7,19 @@
     state: installed
   tags: collectd
 
-- name: Install packages
+- name: Install packages for collectd
   yum:
     pkg: "{{ item }}"
     state: installed
   with_items: collectd_packages
+  tags: collectd
+
+- name: Install packages for collectd-web
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items: collectd_web_packages
+  when: collectd_web_enabled
   tags: collectd
 
 - name: Ensure data directory exists
