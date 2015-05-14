@@ -14,6 +14,12 @@
   with_items: collectd_packages
   tags: collectd
 
+- name: Ensure data directory exists
+  file:
+    path: "{{ collectd_rrdtool_data_dir }}"
+    state: directory
+  tags: collectd
+
 - name: Ensure service is started
   service:
     name: "{{ collectd_service }}"
@@ -33,6 +39,13 @@
     src: etc_collectd.conf.j2
     dest: "{{ collectd_config_file }}"
   notify: restart collectd
+  tags: collectd
+
+- name: Install Apache configuration file
+  template:
+    src: etc_httpd_conf.d_collectd.conf.j2
+    dest: "{{ collectd_web_conf_dir }}/collectd.conf"
+  notify: restart httpd
   tags: collectd
 
 - name: Install rrdtool configuration file

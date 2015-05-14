@@ -1,0 +1,20 @@
+# Configuration for collectd.
+
+ScriptAlias /collectd/bin/ {{ collectd_web_base_dir }}/collection3/bin/
+Alias /collectd/ {{ collectd_web_base_dir }}/collection3/
+
+<Directory {{ collectd_web_base_dir }}/>
+    AddHandler cgi-script .cgi
+    DirectoryIndex bin/index.cgi
+  <IfModule mod_authz_core.c>
+    # Apache 2.4
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    # Apache 2.2
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+    Allow from ::1
+  </IfModule>
+</Directory>
