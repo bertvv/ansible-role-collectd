@@ -1,0 +1,15 @@
+# Config file for Collectd plugin network. This specifies whether this host
+# behaves like a server or a client
+#
+# {{ ansible_managed }}
+
+LoadPlugin network
+
+<Plugin network>
+{% if ansible_all_ipv4_addresses|last == collectd_server %}
+  Listen "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
+{% else %}
+  Server "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
+{% endif %}
+
+</Plugin>

@@ -19,7 +19,7 @@
     pkg: "{{ item }}"
     state: installed
   with_items: collectd_web_packages
-  when: collectd_web_enabled
+  when: collectd_web_enabled and ansible_all_ipv4_addresses|last == collectd_server
   tags: collectd
 
 - name: Ensure data directory exists
@@ -40,13 +40,14 @@
     name: "{{ collectd_web_service }}"
     state: started
     enabled: true
-  when: collectd_web_enabled
+  when: collectd_web_enabled and ansible_all_ipv4_addresses|last == collectd_server
   tags: collectd
 
 - name: Install main configuration file
   template:
     src: etc_collectd.conf.j2
     dest: "{{ collectd_config_file }}"
+    validate: "collectd -t -C %s"
   notify: restart collectd
   tags: collectd
 
@@ -55,12 +56,22 @@
     src: etc_httpd_conf.d_collectd.conf.j2
     dest: "{{ collectd_web_conf_dir }}/collectd.conf"
   notify: restart httpd
-  when: collectd_web_enabled
+  when: collectd_web_enabled and ansible_all_ipv4_addresses|last == collectd_server
   tags: collectd
 
 - name: Install rrdtool configuration file
   template:
     src: etc_collectd_d_rrdtool.conf.j2
     dest: "{{ collectd_include_dir }}/rrdtool.conf"
+    validate: "collectd -t -C %s"
+  notify: restart collectd
+  when: ansible_all_ipv4_addresses|last == collectd_server
+  tags: collectd
+
+- name: Install network configuration file
+  template:
+    src: etc_collectd.d_network.conf.j2
+    dest: "{{ collectd_include_dir }}/network.conf"
+    validate: "collectd -t -C %s"
   notify: restart collectd
   tags: collectd
