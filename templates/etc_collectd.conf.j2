@@ -8,8 +8,7 @@
 # Global settings for the daemon.                                            #
 ##############################################################################
 
-Hostname    "{{ collectd_hostname }}"
-FQDNLookup   {{ collectd_fqdn_lookup }}
+FQDNLookup  true
 BaseDir     "{{ collectd_base_dir }}"
 PIDFile     "{{ collectd_pid_file }}"
 PluginDir   "{{ collectd_plugin_dir }}"
