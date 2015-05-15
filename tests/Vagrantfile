@@ -6,7 +6,7 @@ HOST_NAME = 'collectd'
 VAGRANTFILE_API_VERSION = '2'
 # The number of hosts that send their data to the collectd server
 #  Assumed to be at most 9.
-NUM_CLIENTS = 1
+NUM_CLIENTS = 2
 
 def client_names(base_name, num_clients)
   names = []
