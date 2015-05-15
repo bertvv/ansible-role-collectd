@@ -2,9 +2,6 @@
 # Role variables that may be changed by the administrator
 ---
 
-collectd_hostname: localhost
-collectd_fqdn_lookup: true
-
 collectd_interval: 10
 collectd_timeout: 2
 collectd_read_threads: 5
