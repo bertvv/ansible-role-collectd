@@ -38,7 +38,7 @@ This is a list of the configurable role variables. Variables are not required un
 | `collectd_log_level`     | info    | Specifies the verbosity of logging. Values: info, notice, warning, err.                        |
 | `collectd_read_threads`  | 5       | Number of threads to start for reading plugins.                                                |
 | `collectd_server`        | -       | **Required** The IP address of the host that will collect all generated metrics.               |
-| `collectd_server_port`   | -       | Alternative port number for the collectd server (default is  25827 over UDP)                   |
+| `collectd_server_port`   | -       | Alternative port number for the collectd server (default is  25826 over UDP)                   |
 | `collectd_timeout`       | 2       | Consider a value list "missing" when no update has been received for this number of iterations |
 | `collectd_web_enabled`   | true    | Specifies whether `collectd-web` should be enabled on the server.                              |
 | `collectd_write_threads` | 5       | Number of threads to start for dispatching value lists to write plugins.                       |
