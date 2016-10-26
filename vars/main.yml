@@ -4,6 +4,7 @@
 
 collectd_packages:
   - collectd
+  - collectd-rrdtool
 
 collectd_service: collectd
 collectd_web_service: httpd
