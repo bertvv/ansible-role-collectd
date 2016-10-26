@@ -4,6 +4,13 @@ This file contains al notable changes to the collectd Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 3.0.0 - 2016-10-26
+
+### Changed
+
+- Made compatible with Ansible 2.0, removed deprecation warnings.
+- Made compatible with CentOS 7.2.
+
 ## 2.0.0 - 2015-05-15
 
 ### Added

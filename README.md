@@ -61,7 +61,7 @@ The `tests` directory contains tests for this role in the form of a Vagrant envi
 | `collectdcln1` | 192.168.56.41 | collectd client |
 | `collectdcln2` | 192.168.56.42 | collectd client |
 
-The clients send their metrics to `collectdsrv`. On the server, `collectd-web` is also enabled, and you can view the generated graphs by opening a browser on your host system and surfing to [http://192.168.56.40i/collectd/](http://192.168.56.40/collectd/).
+The clients send their metrics to `collectdsrv`. On the server, `collectd-web` is also enabled, and you can view the generated graphs by opening a browser on your host system and surfing to [http://192.168.56.40/collectd/](http://192.168.56.40/collectd/).
 
 If you want, you can set up from 1 to 9 clients, by editing the Vagrantfile and setting the desired number of clients in the line:
 
