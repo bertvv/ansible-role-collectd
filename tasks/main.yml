@@ -4,9 +4,9 @@
 - include: common.yml
 
 - include: server.yml
-  when: ansible_all_ipv4_addresses|last == collectd_server
+  when: collectd_server in ansible_all_ipv4_addresses
 
 - include: web.yml
-  when: collectd_web_enabled and ansible_all_ipv4_addresses|last == collectd_server
+  when: collectd_web_enabled and collectd_server in ansible_all_ipv4_addresses
 
 

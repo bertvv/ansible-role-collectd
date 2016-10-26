@@ -6,7 +6,7 @@
 LoadPlugin network
 
 <Plugin network>
-{% if ansible_all_ipv4_addresses|last == collectd_server %}
+{% if collectd_server in ansible_all_ipv4_addresses %}
   Listen "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
 {% else %}
   Server "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
