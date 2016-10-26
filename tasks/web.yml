@@ -7,7 +7,7 @@
   yum:
     pkg: "{{ item }}"
     state: installed
-  with_items: collectd_web_packages
+  with_items: "{{ collectd_web_packages }}"
   tags: collectd
 
 - name: Ensure web server is started

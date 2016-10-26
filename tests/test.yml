@@ -1,7 +1,7 @@
 ---
 
 - hosts: all
-  sudo: true
+  become: true
   vars:
     collectd_server: 192.168.56.40
   tasks:

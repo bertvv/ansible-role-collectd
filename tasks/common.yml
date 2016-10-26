@@ -12,7 +12,7 @@
   yum:
     pkg: "{{ item }}"
     state: installed
-  with_items: collectd_packages
+  with_items: "{{ collectd_packages }}"
   tags: collectd
 
 - name: Ensure the collectd service is started
