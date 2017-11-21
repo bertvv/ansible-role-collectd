@@ -17,7 +17,7 @@ def client_names(base_name, num_clients)
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'bertvv/centos72'
+  config.vm.box = 'bento/centos-7.4'
 
   # Server
   server_name = HOST_NAME + 'srv'
