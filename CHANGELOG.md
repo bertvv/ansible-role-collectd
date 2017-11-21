@@ -4,6 +4,12 @@ This file contains al notable changes to the collectd Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 3.0.1 - 2017-11-21
+
+### Changed
+
+- Fixed Ansible 2.4 deprecation warnings (include: -> include_tasks:)
+
 ## 3.0.0 - 2016-10-26
 
 ### Changed
