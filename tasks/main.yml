@@ -1,12 +1,12 @@
 # roles/collectd/tasks/main.yml
 ---
 
-- include: common.yml
+- include_tasks: common.yml
 
-- include: server.yml
+- include_tasks: server.yml
   when: collectd_server in ansible_all_ipv4_addresses
 
-- include: web.yml
+- include_tasks: web.yml
   when: collectd_web_enabled and collectd_server in ansible_all_ipv4_addresses
 
 
