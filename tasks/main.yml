@@ -8,5 +8,3 @@
 
 - include_tasks: web.yml
   when: collectd_web_enabled and collectd_server in ansible_all_ipv4_addresses
-
-
