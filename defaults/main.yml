@@ -10,3 +10,9 @@ collectd_write_threads: 5
 collectd_log_level: info
 
 collectd_web_enabled: true
+
+# DBI plugin
+collectd_dbi_enabled: false
+collectd_dbi_host: 127.0.0.1
+collectd_dbi_username: collectd
+collectd_dbi_password: collectd

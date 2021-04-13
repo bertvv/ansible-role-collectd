@@ -1,0 +1,19 @@
+LoadPlugin dbi
+<Plugin dbi>
+  <Query "global_status">
+    Statement "SHOW GLOBAL STATUS WHERE Value REGEXP '^-?[.0-9]+$';"
+    <Result>
+      Type "gauge"
+      InstancesFrom "Variable_name"
+      ValuesFrom "Value"
+    </Result>
+  </Query>
+  <Database "mariadb_global_status">
+    Driver "mysql"
+    DriverOption "host" "{{ collectd_dbi_host }}"
+    DriverOption "username" "{{ collectd_dbi_username }}"
+    DriverOption "password" "{{ collectd_dbi_password }}"
+    DriverOption "dbname" "information_schema"
+    Query "global_status"
+  </Database>
+</Plugin>

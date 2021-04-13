@@ -6,6 +6,7 @@ collectd_packages:
   - collectd
   - collectd-rrdtool
 
+
 collectd_service: collectd
 collectd_web_service: httpd
 
@@ -23,7 +24,11 @@ collectd_web_base_dir: /usr/share/collectd
 collectd_web_conf_dir: /etc/httpd/conf.d/
 
 collectd_rrdtool_data_dir: /var/lib/collectd/rrd
-collectd_rrdtool_cache_timeout : 120
-collectd_rrdtool_cache_flush : 900
+collectd_rrdtool_cache_timeout: 120
+collectd_rrdtool_cache_flush: 900
 
-
+# DBI plugin
+collectd_dbi_packages:
+  - libdbi
+  - libdbi-dbd-mysql
+  - collectd-dbi
