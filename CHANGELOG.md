@@ -4,6 +4,19 @@ This file contains al notable changes to the collectd Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 3.1.0 - 2021-04-13
+
+### Added
+
+- Support for the [Apache plugin](https://collectd.org/wiki/index.php/Plugin:Apache)
+- Support for the [DBI plugin](https://collectd.org/wiki/index.php/Plugin:DBI)
+- Test framework based on Molecule and Vagrant
+
+### Changed
+
+- Network traffic between nodes is now encrypted. Be sure to change the default password in variable `collectd_password`!
+- Fixed deprecation and linter warnings
+
 ## 3.0.1 - 2017-11-21
 
 ### Changed
