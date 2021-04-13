@@ -1,5 +1,4 @@
-# roles/collectd/vars/main.yml
-# Role variables that normally should not be changed
+# vars/main.yml -- Distro-specific role variables
 ---
 
 collectd_packages:

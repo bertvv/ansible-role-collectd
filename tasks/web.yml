@@ -1,6 +1,4 @@
-# roles/collectd/tasks/web.yml
-# Installation of collectd-web, which should only happen when
-# `collectd_web_enabled` is true and this host is the server
+# tasks/web.yml -- Installation of collectd-web
 ---
 
 - name: Web | Install packages for collectd-web

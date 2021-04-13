@@ -1,4 +1,4 @@
-# roles/collectd/tasks/main.yml
+# tasks/main.yml -- Main task file
 ---
 
 - include_tasks: common.yml

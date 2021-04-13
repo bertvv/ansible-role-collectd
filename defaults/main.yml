@@ -1,5 +1,4 @@
-# roles/collectd/defaults/main.yml
-# Role variables that may be changed by the administrator
+# defaults/main.yml -- Role variables that may be changed by the admin
 ---
 
 collectd_interval: 10
