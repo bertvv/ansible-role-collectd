@@ -1,8 +1,17 @@
 # tasks/dbi.yml -- Configures the dbi plugin
 ---
 
-- name: Ensure necessary packages are installed
+- name: DBI plugin | Ensure necessary packages are installed
   package:
     name: "{{ collectd_dbi_packages }}"
     state: installed
+  tags: collectd
+
+- name: DBI plugin | Install plugin configuration file
+  template:
+    src: etc_collectd.d_dbi.conf.j2
+    dest: "{{ collectd_include_dir }}/dbi.conf"
+    owner: root
+    mode: '0644'
+  notify: restart collectd
   tags: collectd
