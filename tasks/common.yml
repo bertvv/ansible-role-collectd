@@ -1,18 +1,16 @@
-# roles/collectd/tasks/common.yml
-# Tasks that are common to servers and clients
+# tasks/common.yml -- Tasks that are common to servers and clients
 ---
 
 - name: Ensure the EPEL repository is available
-  yum:
-    pkg: epel-release
+  package:
+    name: epel-release
     state: installed
   tags: collectd
 
 - name: Install packages for collectd
-  yum:
-    pkg: "{{ item }}"
+  package:
+    name: "{{ collectd_packages }}"
     state: installed
-  with_items: "{{ collectd_packages }}"
   tags: collectd
 
 - name: Ensure the collectd service is started
@@ -26,6 +24,8 @@
   template:
     src: etc_collectd.conf.j2
     dest: "{{ collectd_config_file }}"
+    owner: root
+    mode: '0644'
     validate: "collectd -t -C %s"
   notify: restart collectd
   tags: collectd
@@ -34,6 +34,8 @@
   template:
     src: etc_collectd.d_network.conf.j2
     dest: "{{ collectd_include_dir }}/network.conf"
+    owner: root
+    mode: '0644'
     validate: "collectd -t -C %s"
   notify: restart collectd
   tags: collectd

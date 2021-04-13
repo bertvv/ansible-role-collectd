@@ -11,4 +11,3 @@
         state: stopped
   roles:
     - collectd
-

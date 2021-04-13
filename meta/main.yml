@@ -1,14 +1,15 @@
 ---
 galaxy_info:
-  author: Bert Van Vreckem
+  role_name: collectd
+  author: bertvv
   description: Installs collectd and, optionally, collectd-web on RHEL/CentOS 7
   license: BSD
-  min_ansible_version: 2.0
+  min_ansible_version: 2.8
   platforms:
-  - name: EL
-    versions:
-      - 7
-  categories:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
     - networking
     - monitoring
 dependencies: []
