@@ -1,0 +1,15 @@
+---
+- name: Molecule test playbook
+  hosts: all
+  become: true
+  vars:
+    collectd_server: 192.168.56.40
+    collectd_interval: 2
+    collectd_log_level: notice
+    collectd_read_threads: 10
+    collectd_timeout: 5
+    collectd_user: ocdalNoi
+    collectd_password: "wabs.swamirOdGerul["
+    collectd_write_threads: 10
+  roles:
+    - role: bertvv.collectd
