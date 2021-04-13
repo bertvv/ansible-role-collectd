@@ -3,21 +3,21 @@
 # `collectd_web_enabled` is true and this host is the server
 ---
 
-- name: Install packages for collectd-web
+- name: Web | Install packages for collectd-web
   yum:
     pkg: "{{ item }}"
     state: installed
   with_items: "{{ collectd_web_packages }}"
   tags: collectd
 
-- name: Ensure web server is started
+- name: Web | Ensure web server is started
   service:
     name: "{{ collectd_web_service }}"
     state: started
     enabled: true
   tags: collectd
 
-- name: Install Apache configuration file
+- name: Web | Install Apache configuration file
   template:
     src: etc_httpd_conf.d_collectd.conf.j2
     dest: "{{ collectd_web_conf_dir }}/collectd.conf"

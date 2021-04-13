@@ -1,7 +1,7 @@
 # tasks/server.yml -- Tasks specific for the collectd server
 ---
 
-- name: Ensure data directory exists
+- name: Server | Ensure data directory exists
   file:
     path: "{{ collectd_rrdtool_data_dir }}"
     state: directory
@@ -9,7 +9,7 @@
     mode: '0755'
   tags: collectd
 
-- name: Install rrdtool configuration file
+- name: Server | Install rrdtool configuration file
   template:
     src: etc_collectd_d_rrdtool.conf.j2
     dest: "{{ collectd_include_dir }}/rrdtool.conf"

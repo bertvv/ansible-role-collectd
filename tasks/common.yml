@@ -1,26 +1,26 @@
 # tasks/common.yml -- Tasks that are common to servers and clients
 ---
 
-- name: Ensure the EPEL repository is available
+- name: Common | Ensure the EPEL repository is available
   package:
     name: epel-release
     state: installed
   tags: collectd
 
-- name: Install packages for collectd
+- name: Common | Install packages for collectd
   package:
     name: "{{ collectd_packages }}"
     state: installed
   tags: collectd
 
-- name: Ensure the collectd service is started
+- name: Common | Ensure the collectd service is started
   service:
     name: "{{ collectd_service }}"
     state: started
     enabled: true
   tags: collectd
 
-- name: Install main configuration file
+- name: Common | Install main configuration file
   template:
     src: etc_collectd.conf.j2
     dest: "{{ collectd_config_file }}"
@@ -30,7 +30,7 @@
   notify: restart collectd
   tags: collectd
 
-- name: Install network configuration file
+- name: Common | Install network configuration file
   template:
     src: etc_collectd.d_network.conf.j2
     dest: "{{ collectd_include_dir }}/network.conf"

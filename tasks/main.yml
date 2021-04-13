@@ -11,3 +11,6 @@
 
 - include_tasks: dbi.yml
   when: collectd_dbi_enabled
+
+- include_tasks: apache.yml
+  when: collectd_apache_enabled
