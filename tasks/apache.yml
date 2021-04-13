@@ -1,0 +1,26 @@
+# tasks/apache.yml -- Configures the apache plugin
+---
+
+- name: Apache plugin | Ensure necessary packages are installed
+  package:
+    name: "{{ collectd_apache_packages }}"
+    state: installed
+  tags: collectd
+
+# TODO: only execute the following if SELinux is present on the current
+# system and enabled.
+- name: Apache plugin | Ensure Collectd can connect to Apache server
+  seboolean:
+    name: collectd_tcp_network_connect
+    state: true
+    persistent: true
+  tags: collectd
+
+- name: Apache plugin | Install plugin configuration file
+  template:
+    src: etc_collectd.d_apache.conf.j2
+    dest: "{{ collectd_include_dir }}/apache.conf"
+    owner: root
+    mode: '0644'
+  notify: restart collectd
+  tags: collectd

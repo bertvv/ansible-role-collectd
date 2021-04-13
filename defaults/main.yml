@@ -11,6 +11,9 @@ collectd_log_level: info
 
 collectd_web_enabled: true
 
+# Apache plugin
+collectd_apache_enabled: false
+
 # DBI plugin
 collectd_dbi_enabled: false
 collectd_dbi_host: 127.0.0.1
