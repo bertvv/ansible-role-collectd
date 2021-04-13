@@ -2,10 +2,9 @@
 ---
 
 - name: Web | Install packages for collectd-web
-  yum:
-    pkg: "{{ item }}"
+  package:
+    pkg: "{{ collectd_web_packages }}"
     state: installed
-  with_items: "{{ collectd_web_packages }}"
   tags: collectd
 
 - name: Web | Ensure web server is started
