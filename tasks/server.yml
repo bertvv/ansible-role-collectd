@@ -9,6 +9,14 @@
     mode: '0755'
   tags: collectd
 
+- name: Common | Install authentication file
+  template:
+    src: etc_collectd_auth.j2
+    dest: "{{ collectd_auth_file }}"
+    owner: root
+    mode: '0600'
+  tags: collectd
+
 - name: Server | Install rrdtool configuration file
   template:
     src: etc_collectd_d_rrdtool.conf.j2

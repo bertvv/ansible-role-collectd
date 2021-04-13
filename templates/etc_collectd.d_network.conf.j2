@@ -7,9 +7,16 @@ LoadPlugin network
 
 <Plugin network>
 {% if collectd_server in ansible_all_ipv4_addresses %}
-  Listen "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
+  <Listen "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}>
+    SecurityLevel "Sign"
+    AuthFile "{{ collectd_auth_file }}"
+  </Listen>
 {% else %}
-  Server "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}
+  <Server "{{ collectd_server }}"{%if collectd_server_port is defined %} "{{ collectd_server_port }}"{% endif %}>
+    SecurityLevel "Encrypt"
+    Username "{{ collectd_user }}"
+    Password "{{ collectd_password }}"
+  </Server>
 {% endif %}
 
 </Plugin>

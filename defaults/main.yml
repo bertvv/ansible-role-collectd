@@ -10,6 +10,11 @@ collectd_log_level: info
 
 collectd_web_enabled: true
 
+# Password for encrypting network traffic to collectd server
+# YOU SHOULD CHANGE THIS VALUE
+collectd_user: collectd
+collectd_password: sekrit
+
 # Apache plugin
 collectd_apache_enabled: false
 

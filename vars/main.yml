@@ -9,6 +9,7 @@ collectd_service: collectd
 collectd_web_service: httpd
 
 collectd_config_file: /etc/collectd.conf
+collectd_auth_file: /etc/collectd.auth
 collectd_include_dir: /etc/collectd.d/
 
 collectd_base_dir: /var/lib/collectd
